@@ -11,9 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ApiCollectionResponse<T> {
     private List<T> items;
-    private boolean next;
+    private Integer page;
+    private Integer pageSize;
+    private boolean hasNext;
 
     public boolean hasNext() {
-        return this.hasNext();
+        return this.hasNext;
     }
 }

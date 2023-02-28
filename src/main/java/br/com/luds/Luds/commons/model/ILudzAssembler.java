@@ -11,8 +11,8 @@ public interface ILudzAssembler<T, DTO, FORM>{
             return entities.stream().map(entity -> assembleDTO(entity)).collect(Collectors.toList());
         }
 
-        default ApiCollectionResponse<DTO> assembleManyDTO(ApiCollectionResponse<T> collection) {
-            List<DTO> dtos = collection.getItems().stream().map(entity -> assembleDTO(entity)).collect(Collectors.toList());
-            return new ApiCollectionResponse(dtos, collection.hasNext());
+        default ApiCollectionResponse<DTO> assembleManyDTO(List<T> collection, Integer page, Integer pageSize, boolean hasNext) {
+            List<DTO> dtos = collection.stream().map(entity -> assembleDTO(entity)).collect(Collectors.toList());
+            return new ApiCollectionResponse(dtos, page, pageSize, hasNext);
         }
 }

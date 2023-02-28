@@ -1,5 +1,6 @@
 package br.com.luds.Luds.unidade.controller;
 
+import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import br.com.luds.Luds.commons.model.ApiCollectionResponse;
 import br.com.luds.Luds.unidade.application.UnidadeApplication;
 import br.com.luds.Luds.unidade.model.dto.UnidadeDTO;
@@ -8,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -18,8 +20,8 @@ public class UnidadeController {
     private final UnidadeApplication unidadeApplication;
 
     @GetMapping
-    public ResponseEntity<ApiCollectionResponse<UnidadeDTO>> listarUnidades() {
-        return ResponseEntity.ok(new ApiCollectionResponse<UnidadeDTO>(this.unidadeApplication.listarUnidades(), false));
+    public ResponseEntity<ApiCollectionResponse<UnidadeDTO>> listarUnidades(@Valid ApiPageRequest pageRequest) {
+        return ResponseEntity.ok(this.unidadeApplication.listarUnidades(pageRequest));
     }
 
     @PostMapping(path = "inserir")
@@ -33,7 +35,7 @@ public class UnidadeController {
     }
 
     @DeleteMapping(path = "remover/{id}")
-    public ResponseEntity<UnidadeDTO> removerUnidade(UUID id) {
+    public ResponseEntity<UnidadeDTO> removerUnidade(@PathVariable UUID id) {
         this.unidadeApplication.removerUnidade(id);
         return ResponseEntity.noContent().build();
     }

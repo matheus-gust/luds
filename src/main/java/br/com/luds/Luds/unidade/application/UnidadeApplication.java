@@ -1,10 +1,13 @@
 package br.com.luds.Luds.unidade.application;
 
+import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
+import br.com.luds.Luds.commons.model.ApiCollectionResponse;
 import br.com.luds.Luds.unidade.service.UnidadeService;
 import br.com.luds.Luds.unidade.model.assembler.UnidadeAssembler;
 import br.com.luds.Luds.unidade.model.dto.UnidadeDTO;
 import br.com.luds.Luds.unidade.model.form.UnidadeForm;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +20,9 @@ public class UnidadeApplication {
     private final UnidadeService unidadeService;
     private final UnidadeAssembler unidadeAssembler;
 
-    public List<UnidadeDTO> listarUnidades() {
-        return unidadeAssembler.assembleManyDTO(this.unidadeService.listarUnidades());
+    public ApiCollectionResponse<UnidadeDTO> listarUnidades(ApiPageRequest pageRequest) {
+        Page pageUnidade = this.unidadeService.listarUnidades(pageRequest);
+        return unidadeAssembler.assembleManyDTO(pageUnidade.toList(), pageRequest.getPage(), pageRequest.getPageSize(), pageUnidade.hasNext());
     }
 
     public UnidadeDTO buscarUnidadePorId(UUID id) {
