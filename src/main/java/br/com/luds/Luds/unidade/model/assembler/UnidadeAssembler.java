@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class UnidadeAssembler implements ILudzAssembler<Unidade, UnidadeDTO, UnidadeForm> {
     @Override
     public UnidadeDTO assembleDTO(Unidade entity) {
-        return new UnidadeDTO(entity.getId(), entity.getNome(), entity.getCnpj());
+        return new UnidadeDTO(entity.getId(), entity.getCodigo(), entity.getLocalidade(), entity.getNome(), entity.getCnpj());
     }
 
     @Override
     public Unidade assembleEntity(UnidadeForm unidadeForm) {
-        return new Unidade(null, unidadeForm.getNome(), unidadeForm.getCnpj());
+        return new Unidade(null, unidadeForm.getCodigo(), unidadeForm.getLocalidade(), unidadeForm.getNome(), unidadeForm.getCnpj());
     }
 }

@@ -1,4 +1,4 @@
-package br.com.luds.Luds.unidade.model;
+package br.com.luds.Luds.insumo.model;
 
 import br.com.luds.Luds.commons.model.LudzEntity;
 import lombok.AllArgsConstructor;
@@ -9,13 +9,14 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Unidade extends LudzEntity<Unidade> {
+public class Insumo extends LudzEntity<Insumo> {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -25,7 +26,9 @@ public class Unidade extends LudzEntity<Unidade> {
     )
     private UUID id;
     private Integer codigo;
-    private String localidade;
     private String nome;
-    private String cnpj;
+    private String fornecedor;
+    private BigDecimal custoCompra;
+    private BigDecimal valorVenda;
+    private String unidadeMedida;
 }

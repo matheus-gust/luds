@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("unidade")
 @AllArgsConstructor
@@ -22,6 +23,11 @@ public class UnidadeController {
     @GetMapping
     public ResponseEntity<ApiCollectionResponse<UnidadeDTO>> listarUnidades(@Valid ApiPageRequest pageRequest) {
         return ResponseEntity.ok(this.unidadeApplication.listarUnidades(pageRequest));
+    }
+
+    @GetMapping(path = "buscar/{idUnidade}")
+    public ResponseEntity<UnidadeDTO> listarUnidades(@PathVariable UUID idUnidade) {
+        return ResponseEntity.ok(this.unidadeApplication.buscarUnidadePorId(idUnidade));
     }
 
     @PostMapping(path = "inserir")
