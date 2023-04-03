@@ -7,7 +7,7 @@ front:
   path: C:\Luds\luds-front\dist\luds-front
 
 server:
-  port: 8080
+  port: 8081
   compression:
     enabled: true
   servlet:
