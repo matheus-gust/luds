@@ -5,3 +5,6 @@ spring:
     password: postgres
 front:
   path: "C:"
+java:
+  runtime:
+    version: 11
