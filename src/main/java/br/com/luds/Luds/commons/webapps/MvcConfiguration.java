@@ -17,7 +17,7 @@ import java.io.IOException;
 
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            String resource = getClass().getClassLoader().getResource("webapp/luds-front").getPath().substring(1);
+            String resource = getClass().getClassLoader().getResource("webapp/luds-front").getPath();
             String pathAlterado = resource.substring(resource.length() - 1).equals(File.separator) ? resource
                     : resource + File.separator;
             System.out.println(pathAlterado);
