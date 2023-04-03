@@ -1,10 +1,12 @@
 package br.com.luds.Luds.commons.webapps;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileUrlResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,6 +17,9 @@ import java.util.Properties;
 
 @Configuration
     public class MvcConfiguration implements WebMvcConfigurer {
+
+    @Autowired
+    private ResourceLoader resourceLoader;
 
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -36,11 +41,13 @@ import java.util.Properties;
                     });
         }
 
-        public static File fetchFront(){
+        public File fetchFront(){
             File file = null;
             try {
-                file = ResourceUtils.getFile("classpath:webapp/luds-front");
+                file = resourceLoader.getResource("classpath:webapp/luds-front").getFile();
             } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
