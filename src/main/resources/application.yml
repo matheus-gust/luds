@@ -1,7 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ludspizzaria #${DATABASE_URL}
+    url: jdbc:postgresql://localhost:5432/luds-pizzaria
     username: postgres
     password: postgres
 front:
-  path: "C:"
+  path: C:\Luds\luds-front\dist\luds-front
+
+server:
+  port: 8081
+  compression:
+    enabled: true
+  servlet:
+    context-path: /app
