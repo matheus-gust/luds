@@ -1,6 +1,6 @@
 create table unidade (
     id uuid primary key not null,
-    codigo numeric(10),
+    codigo varchar(60),
     localidade varchar(50),
     nome varchar(50),
     cnpj varchar(60)
@@ -8,7 +8,7 @@ create table unidade (
 
 create table insumo (
     id uuid primary key not null,
-    codigo numeric(10),
+    codigo varchar(60),
     nome varchar(50),
     fornecedor varchar(60),
     custo_compra numeric(10,2),

@@ -1,4 +1,4 @@
-package br.com.luds.Luds.insumo.model.dto;
+package br.com.luds.Luds.cardapio.categoriacardapio.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,12 +10,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InsumoDTO {
+public class CategoriaCardapioDTO {
     private UUID id;
     private String codigo;
     private String nome;
-    private String fornecedor;
-    private BigDecimal custoCompra;
-    private BigDecimal valorVenda;
-    private String unidadeMedida;
 }

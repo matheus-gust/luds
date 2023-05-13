@@ -1,14 +1,13 @@
-package br.com.luds.Luds.insumo.model;
+package br.com.luds.Luds.cardapio.itemcardapio.model;
 
+import br.com.luds.Luds.cardapio.categoriacardapio.model.CategoriaCardapio;
 import br.com.luds.Luds.commons.model.LudzEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Insumo extends LudzEntity<Insumo> {
+public class ItemCardapio extends LudzEntity<ItemCardapio> {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -27,8 +26,12 @@ public class Insumo extends LudzEntity<Insumo> {
     private UUID id;
     private String codigo;
     private String nome;
-    private String fornecedor;
-    private BigDecimal custoCompra;
-    private BigDecimal valorVenda;
-    private String unidadeMedida;
+    private String descricao;
+    private BigDecimal valor;
+    private String tamanho;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_cardapio_id")
+    private CategoriaCardapio categoria;
+    private byte[] imagem;
 }

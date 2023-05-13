@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UnidadeDTO {
     private UUID id;
-    private Integer codigo;
+    private String codigo;
     private String localidade;
     private String nome;
     private String cnpj;

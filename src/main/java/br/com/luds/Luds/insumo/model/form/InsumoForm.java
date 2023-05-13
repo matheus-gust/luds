@@ -8,7 +8,7 @@ import java.util.UUID;
 @Data
 public class InsumoForm {
     private UUID id;
-    private Integer codigo;
+    private String codigo;
     private String nome;
     private String fornecedor;
     private BigDecimal custoCompra;

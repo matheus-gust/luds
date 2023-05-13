@@ -24,7 +24,7 @@ public class Unidade extends LudzEntity<Unidade> {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private Integer codigo;
+    private String codigo;
     private String localidade;
     private String nome;
     private String cnpj;

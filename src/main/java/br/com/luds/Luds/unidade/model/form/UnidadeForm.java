@@ -7,7 +7,7 @@ import java.util.UUID;
 @Data
 public class UnidadeForm {
     private UUID id;
-    private Integer codigo;
+    private String codigo;
     private String localidade;
     private String nome;
     private String cnpj;
