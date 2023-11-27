@@ -1,14 +1,14 @@
-package br.com.luds.Luds.insumo.model;
+package br.com.luds.Luds.fornecedor.model;
 
 import br.com.luds.Luds.commons.model.LudzEntity;
-import br.com.luds.Luds.fornecedor.model.Fornecedor;
-import br.com.luds.Luds.unidadedemedida.model.UnidadeMedida;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Insumo extends LudzEntity<Insumo> {
+public class Fornecedor extends LudzEntity<Fornecedor> {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -27,14 +27,7 @@ public class Insumo extends LudzEntity<Insumo> {
     private UUID id;
     private String codigo;
     private String nome;
-
-    @ManyToOne
-    @JoinColumn
-    private Fornecedor fornecedor;
-    private BigDecimal custoCompra;
-    private BigDecimal valorVenda;
-
-    @JoinColumn
-    @ManyToOne
-    private UnidadeMedida unidadeMedida;
+    private Integer diaEntregaPrev;
+    private String diaEntregaSemana;
+    private String endereco;
 }
