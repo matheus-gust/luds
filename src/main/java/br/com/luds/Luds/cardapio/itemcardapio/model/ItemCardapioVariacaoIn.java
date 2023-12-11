@@ -1,4 +1,4 @@
-package br.com.luds.Luds.cardapio.categoriacardapio.model.dto;
+package br.com.luds.Luds.cardapio.itemcardapio.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoriaCardapioDTO {
-    private UUID id;
-    private String nome;
+public class ItemCardapioVariacaoIn {
+    private UUID variacaoCardapioId;
+    private BigDecimal valor;
 }

@@ -25,6 +25,5 @@ public class CategoriaCardapio extends LudzEntity<CategoriaCardapio> {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private String codigo;
     private String nome;
 }

@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @CrossOrigin
 @RestController
-@RequestMapping("variacao-cardapio")
+@RequestMapping("variedade-cardapio")
 @AllArgsConstructor
 public class VariacaoCardapioController {
 

@@ -1,5 +1,6 @@
 package br.com.luds.Luds.cardapio.itemcardapio.application;
 
+import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.model.assembler.ItemCardapioAssembler;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioForm;
@@ -10,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -29,11 +31,14 @@ public class ItemCardapioApplication {
     }
 
     public ItemCardapioDTO inserirItemCardapio(ItemCardapioForm itemCardapio) {
-        return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.inserirItemCardapio(this.itemCardapioAssembler.assembleEntity(itemCardapio)));
+        List<ItemCardapioVariacaoIn> variacoes = itemCardapio.getVariacoesCardapio();
+        return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.inserirItemCardapio(
+                this.itemCardapioAssembler.assembleEntity(itemCardapio), variacoes));
     }
 
     public ItemCardapioDTO alterarItemCardapio(UUID id, ItemCardapioForm itemCardapio) {
-        return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.alterarItemCardapio(id, this.itemCardapioAssembler.assembleEntity(itemCardapio)));
+        List<ItemCardapioVariacaoIn> variacoes = itemCardapio.getVariacoesCardapio();
+        return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.alterarItemCardapio(id, this.itemCardapioAssembler.assembleEntity(itemCardapio), variacoes));
     }
 
     public void removerItemCardapio(UUID id) {

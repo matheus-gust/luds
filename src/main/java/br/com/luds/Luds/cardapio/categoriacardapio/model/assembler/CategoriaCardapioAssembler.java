@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class CategoriaCardapioAssembler implements ILudzAssembler<CategoriaCardapio, CategoriaCardapioDTO, CategoriaCardapioForm> {
     @Override
     public CategoriaCardapioDTO assembleDTO(CategoriaCardapio entity) {
-        return new CategoriaCardapioDTO(entity.getId(), entity.getCodigo(), entity.getNome());
+        return new CategoriaCardapioDTO(entity.getId(), entity.getNome());
     }
 
     @Override
     public CategoriaCardapio assembleEntity(CategoriaCardapioForm categoriaCardapioForm) {
-        return new CategoriaCardapio(null, categoriaCardapioForm.getCodigo(), categoriaCardapioForm.getNome());
+        return new CategoriaCardapio(null, categoriaCardapioForm.getNome());
     }
 }

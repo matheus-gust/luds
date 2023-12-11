@@ -7,6 +7,7 @@ import java.util.UUID;
 @Data
 public class AdicionalCardapioForm {
     private UUID id;
-    private String codigo;
     private String nome;
+    private Double valor;
+    private UUID categoriaCardapio;
 }

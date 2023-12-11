@@ -11,6 +11,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class VariacaoCardapioDTO {
     private UUID id;
-    private String codigo;
     private String nome;
+    private String categoriaCardapio;
 }

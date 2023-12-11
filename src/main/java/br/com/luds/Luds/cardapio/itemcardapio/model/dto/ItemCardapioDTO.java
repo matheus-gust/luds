@@ -13,11 +13,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ItemCardapioDTO {
     private UUID id;
-    private String codigo;
     private String nome;
     private String descricao;
     private BigDecimal valor;
-    private String tamanho;
     private CategoriaCardapioDTO categoria;
     private byte[] imagem;
 }

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,6 +23,10 @@ public class VariacaoCardapioService {
 
     public Page<VariacaoCardapio> listarVariacaoCardapios(ApiPageRequest pageRequest) {
         return this.variacaoCardapioRepository.findAll(pageRequest.setPage());
+    }
+
+    public List<VariacaoCardapio> listarVariacoesPorIdEm(List<UUID> ids) {
+        return this.variacaoCardapioRepository.findAllById(ids);
     }
 
     public VariacaoCardapio inserirVariacaoCardapio(VariacaoCardapio variacaoCardapio) {
