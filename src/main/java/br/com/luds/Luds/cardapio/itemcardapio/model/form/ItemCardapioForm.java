@@ -1,9 +1,6 @@
 package br.com.luds.Luds.cardapio.itemcardapio.model.form;
 
-import br.com.luds.Luds.cardapio.adicionalcardapio.model.form.AdicionalCardapioForm;
 import br.com.luds.Luds.cardapio.categoriacardapio.model.form.CategoriaCardapioForm;
-import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacaoIn;
-import br.com.luds.Luds.cardapio.variacaocardapio.model.form.VariacaoCardapioForm;
 import lombok.Data;
 
 import java.math.BigDecimal;

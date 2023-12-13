@@ -2,18 +2,16 @@ package br.com.luds.Luds.cardapio.itemcardapio.service;
 
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacao;
-import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacaoIn;
+import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioVariacaoRepository;
 import br.com.luds.Luds.cardapio.variacaocardapio.exception.VariacaoCardapioNaoEncontradaException;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
-import br.com.luds.Luds.cardapio.variacaocardapio.repository.VariacaoCardapioRepository;
 import br.com.luds.Luds.cardapio.variacaocardapio.service.VariacaoCardapioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package br.com.luds.Luds.cardapio.itemcardapio.model;
+package br.com.luds.Luds.cardapio.itemcardapio.model.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

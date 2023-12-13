@@ -2,7 +2,7 @@ package br.com.luds.Luds.cardapio.itemcardapio.service;
 
 import br.com.luds.Luds.cardapio.itemcardapio.exception.ItemCardapioNaoEncontradaException;
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
-import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacaoIn;
+import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioRepository;
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import lombok.AllArgsConstructor;

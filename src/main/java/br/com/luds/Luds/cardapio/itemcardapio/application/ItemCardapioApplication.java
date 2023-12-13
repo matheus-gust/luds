@@ -1,6 +1,6 @@
 package br.com.luds.Luds.cardapio.itemcardapio.application;
 
-import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacaoIn;
+import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.model.assembler.ItemCardapioAssembler;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioForm;
