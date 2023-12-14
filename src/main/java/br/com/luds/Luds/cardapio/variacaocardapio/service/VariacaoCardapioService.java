@@ -26,7 +26,7 @@ public class VariacaoCardapioService {
     }
 
     public List<VariacaoCardapio> listarVariacoesPorIdEm(List<UUID> ids) {
-        return this.variacaoCardapioRepository.findAllById(ids);
+        return this.variacaoCardapioRepository.findAllByIdIn(ids);
     }
 
     public VariacaoCardapio inserirVariacaoCardapio(VariacaoCardapio variacaoCardapio) {

@@ -1,6 +1,6 @@
 package br.com.luds.Luds.cardapio.itemcardapio.model.dto;
 
-import br.com.luds.Luds.cardapio.variacaocardapio.model.form.dto.VariacaoCardapioDTO;
+import br.com.luds.Luds.cardapio.variacaocardapio.model.dto.VariacaoCardapioDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,8 +15,7 @@ import java.util.UUID;
 public class ItemCardapioVariacaoDTO {
 
     private UUID id;
-    @JsonIgnore
-    private ItemCardapioDTO itemCardapio;
+    private ItemCardapioDTO item;
     private VariacaoCardapioDTO variedade;
     private BigDecimal valor;
 }

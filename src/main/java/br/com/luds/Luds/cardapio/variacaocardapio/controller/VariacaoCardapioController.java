@@ -2,7 +2,7 @@ package br.com.luds.Luds.cardapio.variacaocardapio.controller;
 
 import br.com.luds.Luds.cardapio.variacaocardapio.application.VariacaoCardapioApplication;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.form.VariacaoCardapioForm;
-import br.com.luds.Luds.cardapio.variacaocardapio.model.form.dto.VariacaoCardapioDTO;
+import br.com.luds.Luds.cardapio.variacaocardapio.model.dto.VariacaoCardapioDTO;
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import br.com.luds.Luds.commons.model.ApiCollectionResponse;
 import lombok.AllArgsConstructor;

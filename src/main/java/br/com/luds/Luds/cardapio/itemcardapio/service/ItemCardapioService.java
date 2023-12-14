@@ -5,6 +5,7 @@ import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioRepository;
 import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioVariacaoRepository;
+import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,6 +28,10 @@ public class ItemCardapioService {
 
     public Page<ItemCardapio> listarItemCardapios(ApiPageRequest pageRequest) {
         return this.itemCardapioRepository.findAll(pageRequest.setPage());
+    }
+
+    public List<ItemCardapio> listarItemCardapioPorIdEm(List<UUID> ids) {
+        return this.itemCardapioRepository.findAllById(ids);
     }
 
     public ItemCardapio inserirItemCardapio(ItemCardapio itemCardapio, List<ItemCardapioVariacaoIn> variacoes) {

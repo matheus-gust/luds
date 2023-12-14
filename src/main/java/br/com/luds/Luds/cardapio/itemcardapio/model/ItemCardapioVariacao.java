@@ -1,6 +1,7 @@
 package br.com.luds.Luds.cardapio.itemcardapio.model;
 
 import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,9 +26,11 @@ public class ItemCardapioVariacao {
     )
     private UUID id;
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "item_cardapio_id")
     private ItemCardapio itemCardapio;
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "variacao_cardapio_id")
     private VariacaoCardapio variacaoCardapio;
     private BigDecimal valor;

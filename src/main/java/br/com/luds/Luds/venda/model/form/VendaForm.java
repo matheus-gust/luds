@@ -1,5 +1,7 @@
 package br.com.luds.Luds.venda.model.form;
 
+import br.com.luds.Luds.commons.model.ModelLocalDateDesserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -11,6 +13,7 @@ import java.util.UUID;
 @Data
 public class VendaForm {
     private UUID id;
+    @JsonDeserialize(using = ModelLocalDateDesserializer.class)
     private LocalDate Data;
     private String origem;
     private BigDecimal valor;

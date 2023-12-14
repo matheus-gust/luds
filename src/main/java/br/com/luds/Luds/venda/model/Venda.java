@@ -1,10 +1,7 @@
 package br.com.luds.Luds.venda.model;
 
-import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
 import br.com.luds.Luds.commons.annotation.IgnoreUpdate;
 import br.com.luds.Luds.commons.model.LudzEntity;
-import br.com.luds.Luds.fornecedor.model.Fornecedor;
-import br.com.luds.Luds.unidadedemedida.model.UnidadeMedida;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +9,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +17,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@IgnoreUpdate(fields = {"boletim"})
+@IgnoreUpdate(fields = {"boletim", "itens"})
 public class Venda extends LudzEntity<Venda> {
 
     @Id
@@ -32,10 +28,10 @@ public class Venda extends LudzEntity<Venda> {
     )
     private UUID id;
     private String boletim;
-    private LocalDate Data;
+    private String Data;
     private String origem;
     private BigDecimal valor;
 
-    @OneToMany(mappedBy = "venda")
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<VendaItemCardapio> itens = new ArrayList<>();
 }

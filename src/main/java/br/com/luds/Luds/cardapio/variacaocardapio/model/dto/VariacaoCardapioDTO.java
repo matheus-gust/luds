@@ -1,4 +1,4 @@
-package br.com.luds.Luds.cardapio.variacaocardapio.model.form.dto;
+package br.com.luds.Luds.cardapio.variacaocardapio.model.dto;
 
 import br.com.luds.Luds.cardapio.categoriacardapio.model.CategoriaCardapio;
 import br.com.luds.Luds.cardapio.categoriacardapio.model.dto.CategoriaCardapioDTO;

@@ -12,6 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemCardapioVariacaoIn {
+    private UUID id;
     private VariacaoCardapioForm variedade;
     private BigDecimal valor;
 }

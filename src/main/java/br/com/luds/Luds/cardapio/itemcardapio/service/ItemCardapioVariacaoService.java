@@ -22,6 +22,10 @@ public class ItemCardapioVariacaoService {
     private final ItemCardapioVariacaoRepository itemCardapioVariacaoRepository;
     private final VariacaoCardapioService variacaoCardapioService;
 
+    public ItemCardapioVariacao buscaItemCardapioVariacaoPorId(UUID id) {
+        return itemCardapioVariacaoRepository.findById(id).orElseThrow(VariacaoCardapioNaoEncontradaException::new);
+    }
+
     public List<ItemCardapioVariacao> deltaDeVariacoes(List<ItemCardapioVariacaoIn> variacoes, ItemCardapio itemCardapio) {
         List<VariacaoCardapio> variacaoCardapios = this.variacaoCardapioService.listarVariacoesPorIdEm(variacoes.stream().map(var -> var.getVariedade().getId()).collect(Collectors.toList()));
         List<ItemCardapioVariacao> antigosRelacionamentos = this.listarRelacoesPorIdVariedadeEm(variacoes.stream().map(var -> var.getVariedade().getId()).collect(Collectors.toList()));

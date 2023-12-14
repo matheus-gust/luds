@@ -5,11 +5,13 @@ import br.com.luds.Luds.commons.model.ApiCollectionResponse;
 import br.com.luds.Luds.venda.model.assembler.VendaAssembler;
 import br.com.luds.Luds.venda.model.dto.VendaDTO;
 import br.com.luds.Luds.venda.model.form.VendaForm;
+import br.com.luds.Luds.venda.model.form.VendaItemCardapioIn;
 import br.com.luds.Luds.venda.service.VendaService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -29,11 +31,15 @@ public class VendaApplication {
     }
 
     public VendaDTO inserirVenda(VendaForm venda) {
-        return this.vendaAssembler.assembleDTO(this.vendaService.inserirVenda(this.vendaAssembler.assembleEntity(venda)));
+        List<VendaItemCardapioIn> itens = venda.getItens();
+        return this.vendaAssembler.assembleDTO(
+                this.vendaService.inserirVenda(this.vendaAssembler.assembleEntity(venda), itens
+                        ));
     }
 
     public VendaDTO alterarVenda(UUID id, VendaForm venda) {
-        return this.vendaAssembler.assembleDTO(this.vendaService.alterarVenda(id, this.vendaAssembler.assembleEntity(venda)));
+        List<VendaItemCardapioIn> itens = venda.getItens();
+        return this.vendaAssembler.assembleDTO(this.vendaService.alterarVenda(id, this.vendaAssembler.assembleEntity(venda), itens));
     }
 
     public void removerVenda(UUID id) {

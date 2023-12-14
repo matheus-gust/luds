@@ -1,6 +1,7 @@
 package br.com.luds.Luds.venda.model;
 
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
+import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacao;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
 import br.com.luds.Luds.commons.model.LudzEntity;
 import lombok.AllArgsConstructor;
@@ -32,12 +33,8 @@ public class VendaItemCardapio extends LudzEntity<Venda> {
         private Venda venda;
 
         @ManyToOne
-        @JoinColumn(name="item_cardapio_id")
-        private ItemCardapio itemCardapio;
-
-        @ManyToOne
-        @JoinColumn(name="variacao_cardapio_id")
-        private VariacaoCardapio variacao;
+        @JoinColumn(name="item_cardapio_variacao_id")
+        private ItemCardapioVariacao variacao;
 
         private Integer quantidade;
         private BigDecimal valorTotal;

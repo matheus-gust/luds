@@ -5,7 +5,7 @@ import br.com.luds.Luds.cardapio.categoriacardapio.model.assembler.CategoriaCard
 import br.com.luds.Luds.cardapio.categoriacardapio.service.CategoriaCardapioService;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.form.VariacaoCardapioForm;
-import br.com.luds.Luds.cardapio.variacaocardapio.model.form.dto.VariacaoCardapioDTO;
+import br.com.luds.Luds.cardapio.variacaocardapio.model.dto.VariacaoCardapioDTO;
 import br.com.luds.Luds.commons.model.ILudzAssembler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

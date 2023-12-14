@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -17,6 +18,9 @@ public class UnidadeMedidaService {
     private final UnidadeMedidaRepository unidadeMedidaRepository;
 
     public UnidadeMedida buscarUnidadeMedidaPorId(UUID id) {
+        if(Objects.isNull(id)) {
+            throw new UnidadeMedidaNaoEncontradaException();
+        }
         return this.unidadeMedidaRepository.findById(id).orElseThrow(() -> new UnidadeMedidaNaoEncontradaException());
     }
 

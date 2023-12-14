@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -17,6 +18,9 @@ public class FornecedorService {
     private final FornecedorRepository insumoRepository;
 
     public Fornecedor buscarFornecedorPorId(UUID id) {
+        if(Objects.isNull(id)) {
+            throw new FornecedorNaoEncontradaException();
+        }
         return this.insumoRepository.findById(id).orElseThrow(() -> new FornecedorNaoEncontradaException());
     }
 

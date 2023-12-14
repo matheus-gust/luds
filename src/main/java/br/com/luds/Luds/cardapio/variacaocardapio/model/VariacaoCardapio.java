@@ -4,6 +4,7 @@ import br.com.luds.Luds.cardapio.categoriacardapio.model.CategoriaCardapio;
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacao;
 import br.com.luds.Luds.commons.model.LudzEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +36,7 @@ public class VariacaoCardapio extends LudzEntity<VariacaoCardapio> {
     @JoinColumn(name="categoria_cardapio_id")
     private CategoriaCardapio categoria;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "variacaoCardapio")
     private List<ItemCardapioVariacao> itensCardapio = new ArrayList<>();
 }

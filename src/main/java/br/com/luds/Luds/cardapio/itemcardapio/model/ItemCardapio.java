@@ -4,6 +4,7 @@ import br.com.luds.Luds.cardapio.adicionalcardapio.model.AdicionalCardapio;
 import br.com.luds.Luds.cardapio.categoriacardapio.model.CategoriaCardapio;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
 import br.com.luds.Luds.commons.model.LudzEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,6 +39,7 @@ public class ItemCardapio extends LudzEntity<ItemCardapio> {
     private CategoriaCardapio categoria;
     private byte[] imagem;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "itemCardapio", cascade = CascadeType.ALL)
     private List<ItemCardapioVariacao> variacoes = new ArrayList<>();
 

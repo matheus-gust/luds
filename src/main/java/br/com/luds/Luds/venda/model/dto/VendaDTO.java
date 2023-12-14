@@ -21,7 +21,7 @@ import java.util.UUID;
 public class VendaDTO {
     private UUID id;
     private String boletim;
-    private LocalDate Data;
+    private String Data;
     private String origem;
     private BigDecimal valor;
     private List<VendaItemCardapioDTO> itens = new ArrayList<>();

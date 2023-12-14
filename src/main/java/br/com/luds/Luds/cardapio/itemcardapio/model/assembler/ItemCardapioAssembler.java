@@ -5,13 +5,12 @@ import br.com.luds.Luds.cardapio.categoriacardapio.model.assembler.CategoriaCard
 import br.com.luds.Luds.cardapio.categoriacardapio.model.dto.CategoriaCardapioDTO;
 import br.com.luds.Luds.cardapio.categoriacardapio.service.CategoriaCardapioService;
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
+import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapioVariacao;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioInfoDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioVariacaoDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioForm;
-import br.com.luds.Luds.cardapio.variacaocardapio.model.VariacaoCardapio;
 import br.com.luds.Luds.cardapio.variacaocardapio.model.assembler.VariacaoCardapioAssembler;
-import br.com.luds.Luds.cardapio.variacaocardapio.model.form.dto.VariacaoCardapioDTO;
 import br.com.luds.Luds.commons.model.ApiCollectionResponse;
 import br.com.luds.Luds.commons.model.ILudzAssembler;
 import lombok.RequiredArgsConstructor;
@@ -48,18 +47,27 @@ public class ItemCardapioAssembler implements ILudzAssembler<ItemCardapio, ItemC
 
     public ItemCardapioInfoDTO assembleInfoDTO(ItemCardapio entity) {
         CategoriaCardapioDTO categoriaCardapioDTO = this.categoriaCardapioAssembler.assembleDTO(entity.getCategoria());
-        return new ItemCardapioInfoDTO(entity.getId(), entity.getNome(), entity.getDescricao(), categoriaCardapioDTO, assembleVariacaoDTO(entity));
+        return new ItemCardapioInfoDTO(entity.getId(), entity.getNome(), entity.getDescricao(), categoriaCardapioDTO, assembleManyVariacaoDTO(entity.getVariacoes()));
     }
 
     public ApiCollectionResponse<ItemCardapioInfoDTO> assembleManyInfoDTO(List<ItemCardapio> collection, Integer page, Integer pageSize, boolean hasNext) {
-        List<ItemCardapioInfoDTO> dtos = collection.stream().map(entity -> assembleInfoDTO(entity)).collect(Collectors.toList());
-        return new ApiCollectionResponse(dtos, page, pageSize, hasNext);
+        List<ItemCardapioInfoDTO> dtos = collection.stream().map(this::assembleInfoDTO).collect(Collectors.toList());
+        return new ApiCollectionResponse<>(dtos, page, pageSize, hasNext);
     }
 
-    public List<ItemCardapioVariacaoDTO> assembleVariacaoDTO(ItemCardapio itemCardapio) {
+    public ItemCardapioDTO assemblenoImageDTO(ItemCardapio entity) {
+        CategoriaCardapioDTO categoriaCardapioDTO = this.categoriaCardapioAssembler.assembleDTO(entity.getCategoria());
+        return new ItemCardapioDTO(entity.getId(), entity.getNome(), entity.getDescricao(), categoriaCardapioDTO, null);
+    }
+
+    public ItemCardapioVariacaoDTO assembleVariacaoDTO(ItemCardapioVariacao itemCardapioVariacao) {
+        return new ItemCardapioVariacaoDTO(itemCardapioVariacao.getId(), assemblenoImageDTO(itemCardapioVariacao.getItemCardapio()), variacaoCardapioAssembler.assembleDTO(itemCardapioVariacao.getVariacaoCardapio()), itemCardapioVariacao.getValor());
+    }
+
+    public List<ItemCardapioVariacaoDTO> assembleManyVariacaoDTO(List<ItemCardapioVariacao> variacao) {
         List<ItemCardapioVariacaoDTO> dtos = new ArrayList<>();
-        itemCardapio.getVariacoes().forEach(item -> {
-            dtos.add(new ItemCardapioVariacaoDTO(item.getId(), assembleDTO(itemCardapio), variacaoCardapioAssembler.assembleDTO(item.getVariacaoCardapio()), item.getValor()));
+        variacao.forEach(varia -> {
+            dtos.add(new ItemCardapioVariacaoDTO(varia.getId(), assemblenoImageDTO(varia.getItemCardapio()), variacaoCardapioAssembler.assembleDTO(varia.getVariacaoCardapio()), varia.getValor()));
         });
         return dtos;
     }
