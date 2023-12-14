@@ -23,12 +23,12 @@ public class ItemCardapioVariacaoService {
     private final VariacaoCardapioService variacaoCardapioService;
 
     public List<ItemCardapioVariacao> deltaDeVariacoes(List<ItemCardapioVariacaoIn> variacoes, ItemCardapio itemCardapio) {
-        List<VariacaoCardapio> variacaoCardapios = this.variacaoCardapioService.listarVariacoesPorIdEm(variacoes.stream().map(ItemCardapioVariacaoIn::getVariacaoCardapioId).collect(Collectors.toList()));
-        List<ItemCardapioVariacao> antigosRelacionamentos = this.listarRelacoesPorIdVariedadeEm(variacoes.stream().map(ItemCardapioVariacaoIn::getVariacaoCardapioId).collect(Collectors.toList()));
+        List<VariacaoCardapio> variacaoCardapios = this.variacaoCardapioService.listarVariacoesPorIdEm(variacoes.stream().map(var -> var.getVariedade().getId()).collect(Collectors.toList()));
+        List<ItemCardapioVariacao> antigosRelacionamentos = this.listarRelacoesPorIdVariedadeEm(variacoes.stream().map(var -> var.getVariedade().getId()).collect(Collectors.toList()));
 
         List<ItemCardapioVariacao> novosRelacionamentos = new ArrayList<>();
         variacoes.forEach(variacaoCardapio -> {
-            VariacaoCardapio variacao = variacaoCardapios.stream().filter(var -> var.getId().equals(variacaoCardapio.getVariacaoCardapioId())).findFirst().orElseThrow(VariacaoCardapioNaoEncontradaException::new);
+            VariacaoCardapio variacao = variacaoCardapios.stream().filter(var -> var.getId().equals(variacaoCardapio.getVariedade().getId())).findFirst().orElseThrow(VariacaoCardapioNaoEncontradaException::new);
             novosRelacionamentos.add(new ItemCardapioVariacao(null, itemCardapio, variacao, variacaoCardapio.getValor()));
         });
 
@@ -37,6 +37,6 @@ public class ItemCardapioVariacaoService {
     }
 
     public List<ItemCardapioVariacao> listarRelacoesPorIdVariedadeEm(List<UUID> ids) {
-        return this.itemCardapioVariacaoRepository.findAllByVariacaoCardapioIn(ids);
+        return this.itemCardapioVariacaoRepository.findAllByVariacaoCardapioIdIn(ids);
     }
 }

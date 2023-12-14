@@ -1,5 +1,6 @@
 package br.com.luds.Luds.cardapio.itemcardapio.model.form;
 
+import br.com.luds.Luds.cardapio.variacaocardapio.model.form.VariacaoCardapioForm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemCardapioVariacaoIn {
-    private UUID variacaoCardapioId;
+    private VariacaoCardapioForm variedade;
     private BigDecimal valor;
 }

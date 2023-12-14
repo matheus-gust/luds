@@ -32,14 +32,13 @@ public class ItemCardapio extends LudzEntity<ItemCardapio> {
     private UUID id;
     private String nome;
     private String descricao;
-    private BigDecimal valor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_cardapio_id")
     private CategoriaCardapio categoria;
     private byte[] imagem;
 
-    @OneToMany(mappedBy = "itemCardapio")
+    @OneToMany(mappedBy = "itemCardapio", cascade = CascadeType.ALL)
     private List<ItemCardapioVariacao> variacoes = new ArrayList<>();
 
 }

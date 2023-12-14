@@ -1,5 +1,6 @@
 package br.com.luds.Luds.cardapio.itemcardapio.application;
 
+import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioInfoDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.model.assembler.ItemCardapioAssembler;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioDTO;
@@ -26,18 +27,23 @@ public class ItemCardapioApplication {
         return itemCardapioAssembler.assembleManyDTO(pageItemCardapio.toList(), pageRequest.getPage(), pageRequest.getPageSize(), pageItemCardapio.hasNext());
     }
 
+    public ApiCollectionResponse<ItemCardapioInfoDTO> listarItemCardapiosInfo(ApiPageRequest pageRequest) {
+        Page pageItemCardapio = this.itemCardapioService.listarItemCardapios(pageRequest);
+        return itemCardapioAssembler.assembleManyInfoDTO(pageItemCardapio.toList(), pageRequest.getPage(), pageRequest.getPageSize(), pageItemCardapio.hasNext());
+    }
+
     public ItemCardapioDTO buscarItemCardapioPorId(UUID id) {
         return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.buscarItemCardapioPorId(id));
     }
 
     public ItemCardapioDTO inserirItemCardapio(ItemCardapioForm itemCardapio) {
-        List<ItemCardapioVariacaoIn> variacoes = itemCardapio.getVariacoesCardapio();
+        List<ItemCardapioVariacaoIn> variacoes = itemCardapio.getVariedades();
         return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.inserirItemCardapio(
                 this.itemCardapioAssembler.assembleEntity(itemCardapio), variacoes));
     }
 
     public ItemCardapioDTO alterarItemCardapio(UUID id, ItemCardapioForm itemCardapio) {
-        List<ItemCardapioVariacaoIn> variacoes = itemCardapio.getVariacoesCardapio();
+        List<ItemCardapioVariacaoIn> variacoes = itemCardapio.getVariedades();
         return this.itemCardapioAssembler.assembleDTO(this.itemCardapioService.alterarItemCardapio(id, this.itemCardapioAssembler.assembleEntity(itemCardapio), variacoes));
     }
 

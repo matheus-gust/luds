@@ -4,6 +4,7 @@ import br.com.luds.Luds.cardapio.itemcardapio.exception.ItemCardapioNaoEncontrad
 import br.com.luds.Luds.cardapio.itemcardapio.model.ItemCardapio;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioVariacaoIn;
 import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioRepository;
+import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioVariacaoRepository;
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ public class ItemCardapioService {
 
     private final ItemCardapioRepository itemCardapioRepository;
     private final ItemCardapioVariacaoService itemCardapioVariacaoService;
+    private final ItemCardapioVariacaoRepository itemCardapioVariacaoRepository;
 
     public ItemCardapio buscarItemCardapioPorId(UUID id) {
         return this.itemCardapioRepository.findById(id).orElseThrow(() -> new ItemCardapioNaoEncontradaException());
@@ -32,6 +34,7 @@ public class ItemCardapioService {
         if(!variacoes.isEmpty()) {
             novoItemCardapio.setVariacoes(this.itemCardapioVariacaoService.deltaDeVariacoes(variacoes, novoItemCardapio));
         }
+        this.itemCardapioVariacaoRepository.saveAll(itemCardapio.getVariacoes());
         return this.itemCardapioRepository.save(itemCardapio);
     }
 

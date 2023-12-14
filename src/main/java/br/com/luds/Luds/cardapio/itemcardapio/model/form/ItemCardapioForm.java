@@ -14,8 +14,7 @@ public class ItemCardapioForm {
     private String codigo;
     private String nome;
     private String descricao;
-    private BigDecimal valor;
     private CategoriaCardapioForm categoria;
-    private List<ItemCardapioVariacaoIn> variacoesCardapio = new ArrayList<>();
+    private List<ItemCardapioVariacaoIn> variedades = new ArrayList<>();
     private byte[] imagem;
 }

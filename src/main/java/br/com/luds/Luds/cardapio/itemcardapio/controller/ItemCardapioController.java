@@ -2,6 +2,7 @@ package br.com.luds.Luds.cardapio.itemcardapio.controller;
 
 import br.com.luds.Luds.cardapio.itemcardapio.application.ItemCardapioApplication;
 import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioDTO;
+import br.com.luds.Luds.cardapio.itemcardapio.model.dto.ItemCardapioInfoDTO;
 import br.com.luds.Luds.cardapio.itemcardapio.model.form.ItemCardapioForm;
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import br.com.luds.Luds.commons.model.ApiCollectionResponse;
@@ -23,6 +24,11 @@ public class ItemCardapioController {
     @GetMapping
     public ResponseEntity<ApiCollectionResponse<ItemCardapioDTO>> listarItemCardapios(@Valid ApiPageRequest pageRequest) {
         return ResponseEntity.ok(this.itemCardapioApplication.listarItemCardapios(pageRequest));
+    }
+
+    @GetMapping(path = "info")
+    public ResponseEntity<ApiCollectionResponse<ItemCardapioInfoDTO>> listarItemCardapiosInfo(@Valid ApiPageRequest pageRequest) {
+        return ResponseEntity.ok(this.itemCardapioApplication.listarItemCardapiosInfo(pageRequest));
     }
 
     @GetMapping(path = "/{idItemCardapio}")

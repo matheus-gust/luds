@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface ItemCardapioVariacaoRepository extends JpaRepository<ItemCardapioVariacao, UUID> {
 
-    List<ItemCardapioVariacao> findAllByVariacaoCardapioIn(List<UUID> variacoes);
+    List<ItemCardapioVariacao> findAllByVariacaoCardapioIdIn(List<UUID> variacoes);
 }
