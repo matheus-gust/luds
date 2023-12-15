@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: ${JDBC_DATASOURCE_URL}
-    username: postgres
-    password: postgres
+    username: mvxpywjltcakct
+    password: a2de2f6d9fb9100fc4679887a6d07af974b3562ab2d3ddb4bd61c69f75085d3c
 front:
   path: C:\Luds\luds-front\dist\luds-front
 
