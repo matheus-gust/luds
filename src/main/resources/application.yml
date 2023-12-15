@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: ${JDBC_DATASOURCE_URL}
-    username: mvxpywjltcakct
-    password: a2de2f6d9fb9100fc4679887a6d07af974b3562ab2d3ddb4bd61c69f75085d3c
+    username: ialixajrpoaxxu
+    password: b20f3f6335d11f983617f12a0e4bac9f904a5668a28b0f8aacd9e9c5012b5636
 front:
   path: C:\Luds\luds-front\dist\luds-front
 
