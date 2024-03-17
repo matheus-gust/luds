@@ -1,0 +1,1 @@
+ALTER TABLE compra_insumo ALTER COLUMN quantidade TYPE numeric(10,2);

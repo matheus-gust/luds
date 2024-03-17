@@ -31,7 +31,7 @@ public class CompraAssembler implements ILudzAssembler<Compra, CompraDTO, Compra
         List<CompraInsumoDTO> compraInsumoDTOS = compraInsumoAssembler.assembleManyDTO(entity.getItens());
         FornecedorDTO fornecedor = fornecedorAssembler.assembleDTO(entity.getFornecedor());
         BigDecimal valorTotal = entity.getItens().stream()
-                .map(item -> item.getValor().multiply(new BigDecimal(item.getQuantidade())))
+                .map(item -> item.getValor().multiply(item.getQuantidade()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         return new CompraDTO(entity.getId(), entity.getBoletim(), entity.getData(), fornecedor, valorTotal, compraInsumoDTOS);
     }
