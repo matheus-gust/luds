@@ -10,8 +10,5 @@ public class InsumoForm {
     private UUID id;
     private String codigo;
     private String nome;
-    private UUID fornecedor;
-    private BigDecimal custoCompra;
-    private BigDecimal valorVenda;
     private UUID unidadeMedida;
 }

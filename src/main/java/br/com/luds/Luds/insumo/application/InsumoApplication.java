@@ -6,7 +6,6 @@ import br.com.luds.Luds.insumo.model.assembler.InsumoAssembler;
 import br.com.luds.Luds.insumo.model.dto.InsumoDTO;
 import br.com.luds.Luds.insumo.model.form.InsumoForm;
 import br.com.luds.Luds.insumo.service.InsumoService;
-import br.com.luds.Luds.unidade.model.dto.UnidadeDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

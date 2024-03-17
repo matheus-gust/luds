@@ -37,7 +37,7 @@ public class ItemCardapioController {
     }
 
     @PostMapping(path = "inserir")
-    public ResponseEntity<ItemCardapioDTO> inserirItemCardapios(@RequestBody ItemCardapioForm itemCardapioForm) {
+    public ResponseEntity<ItemCardapioDTO> inserirItemCardapios(@Valid @RequestBody ItemCardapioForm itemCardapioForm) {
         return ResponseEntity.ok(this.itemCardapioApplication.inserirItemCardapio(itemCardapioForm));
     }
 

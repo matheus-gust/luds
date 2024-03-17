@@ -14,8 +14,5 @@ public class InsumoDTO {
     private UUID id;
     private String codigo;
     private String nome;
-    private String fornecedor;
-    private BigDecimal custoCompra;
-    private BigDecimal valorVenda;
     private String unidadeMedida;
 }
