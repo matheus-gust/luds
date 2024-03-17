@@ -35,7 +35,7 @@ public class CompraInsumo extends LudzEntity<Compra> {
         @JoinColumn(name="insumo_id")
         private Insumo insumo;
 
-        private Integer quantidade;
+        private BigDecimal quantidade;
         private BigDecimal valor;
 
 }

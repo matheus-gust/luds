@@ -1,6 +1,5 @@
 package br.com.luds.Luds.compra.model.form;
 
-import br.com.luds.Luds.insumo.model.form.InsumoForm;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +13,6 @@ import java.util.UUID;
 public class CompraInsumoIn {
     private UUID id;
     private InsumoCompraForm insumo;
-    private Integer quantidade;
+    private BigDecimal quantidade;
     private BigDecimal valor;
 }

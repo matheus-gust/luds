@@ -15,6 +15,6 @@ public class CompraInsumoDTO {
     private UUID id;
     private CompraDTO compra;
     private InsumoDTO insumo;
-    private Integer quantidade;
+    private BigDecimal quantidade;
     private BigDecimal valor;
 }
