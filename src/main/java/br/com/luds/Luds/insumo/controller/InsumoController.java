@@ -5,7 +5,6 @@ import br.com.luds.Luds.commons.model.ApiCollectionResponse;
 import br.com.luds.Luds.insumo.application.InsumoApplication;
 import br.com.luds.Luds.insumo.model.dto.InsumoDTO;
 import br.com.luds.Luds.insumo.model.form.InsumoForm;
-import br.com.luds.Luds.unidade.model.dto.UnidadeDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

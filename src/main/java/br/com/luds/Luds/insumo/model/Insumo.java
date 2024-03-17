@@ -1,9 +1,9 @@
 package br.com.luds.Luds.insumo.model;
 
 import br.com.luds.Luds.commons.model.LudzEntity;
-import br.com.luds.Luds.fornecedor.model.Fornecedor;
 import br.com.luds.Luds.unidadedemedida.model.UnidadeMedida;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -14,6 +14,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Insumo extends LudzEntity<Insumo> {
@@ -27,12 +28,6 @@ public class Insumo extends LudzEntity<Insumo> {
     private UUID id;
     private String codigo;
     private String nome;
-
-    @ManyToOne
-    @JoinColumn
-    private Fornecedor fornecedor;
-    private BigDecimal custoCompra;
-    private BigDecimal valorVenda;
 
     @JoinColumn
     @ManyToOne

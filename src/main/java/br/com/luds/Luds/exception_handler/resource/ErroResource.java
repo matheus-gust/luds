@@ -8,6 +8,7 @@ import br.com.luds.Luds.exception_handler.model.ErroPadrao;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -48,6 +49,17 @@ public class ErroResource {
     @ExceptionHandler(javax.validation.ConstraintViolationException.class)
     public ResponseEntity<ErroPadrao> objectIllegal(javax.validation.ConstraintViolationException e, HttpServletRequest request) {
         ErroPadrao erro = new ErroPadrao(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Entidades já relacionadas", "Essa entidade já não pode ser excluida", request.getRequestURI(), true);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
+
+    @ExceptionHandler(org.springframework.web.bind.MethodArgumentNotValidException.class)
+    public ResponseEntity<ErroPadrao> objectIllegal(org.springframework.web.bind.MethodArgumentNotValidException e, HttpServletRequest request) {
+        BindingResult bindingResult = e.getBindingResult();
+        StringBuilder errorMessage = new StringBuilder();
+        bindingResult.getFieldErrors().forEach(error -> {
+            errorMessage.append(error.getDefaultMessage()).append("\n");
+        });
+        ErroPadrao erro = new ErroPadrao(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), errorMessage.toString(), errorMessage.toString(), request.getRequestURI(), true);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
     }
 
