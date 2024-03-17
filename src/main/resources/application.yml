@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: ${JDBC_DATASOURCE_URL}
-    username: ialixajrpoaxxu
-    password: b20f3f6335d11f983617f12a0e4bac9f904a5668a28b0f8aacd9e9c5012b5636
-    #url: jdbc:postgresql://localhost:5432/luds-pizzaria
-    #username: postgres
-    #password: postgres
+    #url: ${JDBC_DATASOURCE_URL}
+    #username: ialixajrpoaxxu
+    #password: b20f3f6335d11f983617f12a0e4bac9f904a5668a28b0f8aacd9e9c5012b5636
+    url: jdbc:postgresql://localhost:5432/luds-pizzaria
+    username: postgres
+    password: postgres
 front:
   path: C:\Luds\luds-front\dist\luds-front
 
