@@ -14,5 +14,6 @@ public class CompraInsumoIn {
     private UUID id;
     private InsumoCompraForm insumo;
     private BigDecimal quantidade;
+    private BigDecimal desconto;
     private BigDecimal valor;
 }

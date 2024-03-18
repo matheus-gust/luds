@@ -14,7 +14,7 @@ import javax.validation.constraints.Min;
 public class ApiPageRequest {
 
     @Min(value = 1)
-    private Integer pageSize = 8;
+    private Integer pageSize = 1000;
     private Integer page = 0;
 
     public Pageable setPage() {

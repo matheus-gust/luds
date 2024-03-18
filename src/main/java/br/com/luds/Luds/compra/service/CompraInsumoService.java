@@ -30,7 +30,7 @@ public class CompraInsumoService {
                 throw new InsumoNaoEncontradaException();
             }
             Insumo insumo = insumoService.buscarInsumoPorId(itemComp.getInsumo().getId());
-            novosRelacionamentos.add(new CompraInsumo(null, compra, insumo, itemComp.getQuantidade(), itemComp.getValor()));
+            novosRelacionamentos.add(new CompraInsumo(null, compra, insumo, itemComp.getQuantidade(), itemComp.getDesconto(), itemComp.getValor()));
         });
 
         for (CompraInsumo item : antigosRelacionamentos) {

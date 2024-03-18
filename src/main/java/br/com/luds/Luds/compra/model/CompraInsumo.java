@@ -17,7 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "compra_insumo")
-public class CompraInsumo extends LudzEntity<Compra> {
+public class CompraInsumo extends LudzEntity<CompraInsumo> {
 
         @Id
         @GeneratedValue(generator = "UUID")
@@ -36,6 +36,7 @@ public class CompraInsumo extends LudzEntity<Compra> {
         private Insumo insumo;
 
         private BigDecimal quantidade;
+        private BigDecimal desconto;
         private BigDecimal valor;
 
 }
