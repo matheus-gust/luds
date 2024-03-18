@@ -20,12 +20,12 @@ public class CompraInsumoAssembler implements ILudzAssembler<CompraInsumo, Compr
     @Override
     public CompraInsumoDTO assembleDTO(CompraInsumo entity) {
         InsumoDTO insumo = insumoAssembler.assembleDTO(entity.getInsumo());
-        return new CompraInsumoDTO(entity.getId(), null, insumo, entity.getQuantidade(), entity.getValor());
+        return new CompraInsumoDTO(entity.getId(), null, insumo, entity.getQuantidade(), entity.getDesconto(), entity.getValor());
     }
 
     @Override
     public CompraInsumo assembleEntity(CompraInsumoIn vendaItemCardapioIn) {
         Insumo insumo = this.insumoService.buscarInsumoPorId(vendaItemCardapioIn.getInsumo().getId());
-        return new CompraInsumo(null, null, insumo, vendaItemCardapioIn.getQuantidade(), vendaItemCardapioIn.getValor());
+        return new CompraInsumo(null, null, insumo, vendaItemCardapioIn.getQuantidade(), vendaItemCardapioIn.getDesconto(), vendaItemCardapioIn.getValor());
     }
 }

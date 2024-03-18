@@ -16,5 +16,6 @@ public class CompraInsumoDTO {
     private CompraDTO compra;
     private InsumoDTO insumo;
     private BigDecimal quantidade;
+    private BigDecimal desconto;
     private BigDecimal valor;
 }

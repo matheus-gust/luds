@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,9 @@ public class CompraAssembler implements ILudzAssembler<Compra, CompraDTO, Compra
         List<CompraInsumoDTO> compraInsumoDTOS = compraInsumoAssembler.assembleManyDTO(entity.getItens());
         FornecedorDTO fornecedor = fornecedorAssembler.assembleDTO(entity.getFornecedor());
         BigDecimal valorTotal = entity.getItens().stream()
-                .map(item -> item.getValor().multiply(item.getQuantidade()))
+                .map(item -> item.getValor().multiply(item.getQuantidade()).subtract(item.getDesconto()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+        valorTotal = valorTotal.setScale(2, RoundingMode.HALF_UP);
         return new CompraDTO(entity.getId(), entity.getBoletim(), entity.getData(), fornecedor, valorTotal, compraInsumoDTOS);
     }
 
