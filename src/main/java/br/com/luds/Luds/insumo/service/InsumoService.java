@@ -21,7 +21,7 @@ public class InsumoService {
     }
 
     public Page<Insumo> listarInsumos(ApiPageRequest pageRequest) {
-        return this.insumoRepository.findAll(pageRequest.setPage());
+        return this.insumoRepository.findAllOrderedByCodigoAsc(pageRequest.setPage());
     }
 
     public Insumo inserirInsumo(Insumo insumo) {

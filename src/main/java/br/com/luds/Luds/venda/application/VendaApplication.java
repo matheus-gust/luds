@@ -2,8 +2,10 @@ package br.com.luds.Luds.venda.application;
 
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import br.com.luds.Luds.commons.model.ApiCollectionResponse;
+import br.com.luds.Luds.venda.model.Parte;
 import br.com.luds.Luds.venda.model.assembler.VendaAssembler;
 import br.com.luds.Luds.venda.model.dto.VendaDTO;
+import br.com.luds.Luds.venda.model.form.ParteIn;
 import br.com.luds.Luds.venda.model.form.VendaForm;
 import br.com.luds.Luds.venda.model.form.VendaItemCardapioIn;
 import br.com.luds.Luds.venda.service.VendaService;
@@ -31,15 +33,15 @@ public class VendaApplication {
     }
 
     public VendaDTO inserirVenda(VendaForm venda) {
-        List<VendaItemCardapioIn> itens = venda.getItens();
+        List<ParteIn> partes = venda.getPartes();
         return this.vendaAssembler.assembleDTO(
-                this.vendaService.inserirVenda(this.vendaAssembler.assembleEntity(venda), itens
+                this.vendaService.inserirVenda(this.vendaAssembler.assembleEntity(venda), partes
                         ));
     }
 
     public VendaDTO alterarVenda(UUID id, VendaForm venda) {
-        List<VendaItemCardapioIn> itens = venda.getItens();
-        return this.vendaAssembler.assembleDTO(this.vendaService.alterarVenda(id, this.vendaAssembler.assembleEntity(venda), itens));
+        List<ParteIn> partes = venda.getPartes();
+        return this.vendaAssembler.assembleDTO(this.vendaService.alterarVenda(id, this.vendaAssembler.assembleEntity(venda), partes));
     }
 
     public void removerVenda(UUID id) {

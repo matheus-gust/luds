@@ -4,7 +4,9 @@ import br.com.luds.Luds.cardapio.itemcardapio.repository.ItemCardapioVariacaoRep
 import br.com.luds.Luds.commons.ludspage.ApiPageRequest;
 import br.com.luds.Luds.venda.exception.VendaNaoEncontradaException;
 import br.com.luds.Luds.venda.model.Venda;
+import br.com.luds.Luds.venda.model.form.ParteIn;
 import br.com.luds.Luds.venda.model.form.VendaItemCardapioIn;
+import br.com.luds.Luds.venda.repository.ParteRepository;
 import br.com.luds.Luds.venda.repository.VendaItemCardapioRepository;
 import br.com.luds.Luds.venda.repository.VendaRepository;
 import lombok.AllArgsConstructor;
@@ -22,30 +24,29 @@ public class VendaService {
 
     private final VendaRepository vendaRepository;
     private final VendaItemCardapioRepository vendaItemCardapioRepository;
-    private final VendaItemCardapioService vendaItemCardapioService;
+    private final ParteService parteService;
+    private final ParteRepository parteRepository;
 
     public Venda buscarVendaPorId(UUID id) {
         return this.vendaRepository.findById(id).orElseThrow(() -> new VendaNaoEncontradaException());
     }
 
     public Page<Venda> listarVendas(ApiPageRequest pageRequest) {
-        return this.vendaRepository.findAll(pageRequest.setPage());
+        return this.vendaRepository.findAllOrderedByDataDesc(pageRequest.setPage());
     }
     @Transactional
-    public Venda inserirVenda(Venda venda, List<VendaItemCardapioIn> itens) {
-        Venda novaVenda = this.vendaRepository.save(venda);
-        if(!itens.isEmpty()) {
-            novaVenda.setItens(this.vendaItemCardapioService.deltaDeitens(itens, novaVenda));
+    public Venda inserirVenda(Venda venda, List<ParteIn> partes) {
+        if(!partes.isEmpty()) {
+            venda.setPartes(this.parteService.deltaDeitens(partes, venda));
         }
-        this.vendaItemCardapioRepository.saveAll(novaVenda.getItens());
         return this.vendaRepository.save(venda);
     }
 
     @Transactional
-    public Venda alterarVenda(UUID id, Venda venda, List<VendaItemCardapioIn> itens) {
+    public Venda alterarVenda(UUID id, Venda venda, List<ParteIn> partes) {
         Venda vendaVendaAtualizade = this.buscarVendaPorId(id);
-        if(!vendaVendaAtualizade.getItens().isEmpty() || !itens.isEmpty()) {
-            vendaVendaAtualizade.setItens(this.vendaItemCardapioService.deltaDeitens(itens, vendaVendaAtualizade));
+        if(!vendaVendaAtualizade.getPartes().isEmpty() || !partes.isEmpty()) {
+            vendaVendaAtualizade.setPartes(this.parteService.deltaDeitens(partes, vendaVendaAtualizade));
         }
         vendaVendaAtualizade.atualiza(venda);
         return this.vendaRepository.save(vendaVendaAtualizade);

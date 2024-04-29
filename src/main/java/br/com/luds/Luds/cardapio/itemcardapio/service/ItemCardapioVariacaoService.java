@@ -28,7 +28,7 @@ public class ItemCardapioVariacaoService {
 
     public List<ItemCardapioVariacao> deltaDeVariacoes(List<ItemCardapioVariacaoIn> variacoes, ItemCardapio itemCardapio) {
         List<VariacaoCardapio> variacaoCardapios = this.variacaoCardapioService.listarVariacoesPorIdEm(variacoes.stream().map(var -> var.getVariedade().getId()).collect(Collectors.toList()));
-        List<ItemCardapioVariacao> antigosRelacionamentos = this.listarRelacoesPorIdVariedadeEm(variacoes.stream().map(var -> var.getVariedade().getId()).collect(Collectors.toList()));
+        List<ItemCardapioVariacao> antigosRelacionamentos = this.listarRelacoesPorIdVariedadeEm(itemCardapio.getVariacoes().stream().map(var -> var.getVariacaoCardapio().getId()).collect(Collectors.toList()));
 
         List<ItemCardapioVariacao> novosRelacionamentos = new ArrayList<>();
         variacoes.forEach(variacaoCardapio -> {

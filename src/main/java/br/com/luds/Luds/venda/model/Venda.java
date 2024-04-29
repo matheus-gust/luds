@@ -17,7 +17,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@IgnoreUpdate(fields = {"boletim", "itens"})
+@IgnoreUpdate(fields = {"boletim", "partes"})
 public class Venda extends LudzEntity<Venda> {
 
     @Id
@@ -28,10 +28,10 @@ public class Venda extends LudzEntity<Venda> {
     )
     private UUID id;
     private String boletim;
-    private String Data;
+    private String data;
     private String origem;
     private BigDecimal valor;
 
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
-    private List<VendaItemCardapio> itens = new ArrayList<>();
+    private List<Parte> partes = new ArrayList<>();
 }

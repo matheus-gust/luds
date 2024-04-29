@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class VendaItemCardapioDTO {
     private UUID id;
-    private VendaDTO venda;
+    private ItemCardapioDTO item;
     private ItemCardapioVariacaoDTO variedade;
     private Integer quantidade;
     private BigDecimal valor;

@@ -25,7 +25,7 @@ public class UnidadeMedidaService {
     }
 
     public Page<UnidadeMedida> listarUnidadeMedidas(ApiPageRequest pageRequest) {
-        return this.unidadeMedidaRepository.findAll(pageRequest.setPage());
+        return this.unidadeMedidaRepository.findAllOrderedByNomeAsc(pageRequest.setPage());
     }
 
     public UnidadeMedida inserirUnidadeMedida(UnidadeMedida unidadeMedida) {

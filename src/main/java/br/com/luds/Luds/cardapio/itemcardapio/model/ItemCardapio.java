@@ -32,6 +32,7 @@ public class ItemCardapio extends LudzEntity<ItemCardapio> {
     )
     private UUID id;
     private String nome;
+    private String codigo;
     private String descricao;
 
     @ManyToOne(fetch = FetchType.LAZY)

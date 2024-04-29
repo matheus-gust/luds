@@ -29,8 +29,8 @@ public class VendaItemCardapio extends LudzEntity<Venda> {
         private UUID id;
 
         @ManyToOne
-        @JoinColumn(name="venda_id")
-        private Venda venda;
+        @JoinColumn(name="parte_id")
+        private Parte parte;
 
         @ManyToOne
         @JoinColumn(name="item_cardapio_variacao_id")

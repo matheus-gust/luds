@@ -2,6 +2,7 @@ package br.com.luds.Luds.compra.model;
 
 import br.com.luds.Luds.commons.annotation.IgnoreUpdate;
 import br.com.luds.Luds.commons.model.LudzEntity;
+import br.com.luds.Luds.formapagamento.model.FormaPagamento;
 import br.com.luds.Luds.fornecedor.model.Fornecedor;
 import br.com.luds.Luds.venda.model.VendaItemCardapio;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,10 @@ public class Compra extends LudzEntity<Compra> {
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
+
+    @ManyToOne
+    @JoinColumn(name = "forma_pagamento_id")
+    private FormaPagamento formaPagamento;
 
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
     private List<CompraInsumo> itens = new ArrayList<>();

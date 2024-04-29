@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class VendaItemCardapioService {
-    private final VendaItemCardapioRepository vendaItemCardapioRepository;
+    /*private final VendaItemCardapioRepository vendaItemCardapioRepository;
     private final ItemCardapioVariacaoService itemCardapioVariacaoService;
 
     public List<VendaItemCardapio> deltaDeitens(List<VendaItemCardapioIn> itens, Venda venda) {
@@ -46,6 +46,6 @@ public class VendaItemCardapioService {
     }
 
     public List<VendaItemCardapio> listarRelacoesPorIdItemEm(UUID id) {
-        return this.vendaItemCardapioRepository.findAllByVendaId(id);
-    }
+        return* this.vendaItemCardapioRepository.findAllByVendaId(id);
+    }*/
 }

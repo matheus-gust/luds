@@ -1,5 +1,6 @@
 package br.com.luds.Luds.compra.model.dto;
 
+import br.com.luds.Luds.formapagamento.model.dto.FormaPagamentoDTO;
 import br.com.luds.Luds.fornecedor.model.dto.FornecedorDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class CompraDTO {
     private String boletim;
     private String data;
     private FornecedorDTO fornecedor;
+    private FormaPagamentoDTO formaPagamento;
     private BigDecimal valorTotal;
     private List<CompraInsumoDTO> itens = new ArrayList<>();
 }

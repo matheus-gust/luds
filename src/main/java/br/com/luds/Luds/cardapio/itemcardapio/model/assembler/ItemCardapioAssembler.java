@@ -31,7 +31,7 @@ public class ItemCardapioAssembler implements ILudzAssembler<ItemCardapio, ItemC
     @Override
     public ItemCardapioDTO assembleDTO(ItemCardapio entity) {
         CategoriaCardapioDTO categoriaCardapioDTO = this.categoriaCardapioAssembler.assembleDTO(entity.getCategoria());
-        return new ItemCardapioDTO(entity.getId(), entity.getNome(), entity.getDescricao(), categoriaCardapioDTO, entity.getImagem());
+        return new ItemCardapioDTO(entity.getId(), entity.getNome(), entity.getCodigo(), entity.getDescricao(), categoriaCardapioDTO, assembleManyVariacaoDTO(entity.getVariacoes()),  entity.getImagem());
     }
 
     @Override
@@ -39,6 +39,7 @@ public class ItemCardapioAssembler implements ILudzAssembler<ItemCardapio, ItemC
         CategoriaCardapio categoriaCardapio = this.categoriaCardapioService.buscarCategoriaCardapioPorId(itemCardapioForm.getCategoria().getId());
         return ItemCardapio.builder()
                 .categoria(categoriaCardapio)
+                .codigo(itemCardapioForm.getCodigo())
                 .descricao(itemCardapioForm.getDescricao())
                 .imagem(itemCardapioForm.getImagem())
                 .nome(itemCardapioForm.getNome())
@@ -57,7 +58,15 @@ public class ItemCardapioAssembler implements ILudzAssembler<ItemCardapio, ItemC
 
     public ItemCardapioDTO assemblenoImageDTO(ItemCardapio entity) {
         CategoriaCardapioDTO categoriaCardapioDTO = this.categoriaCardapioAssembler.assembleDTO(entity.getCategoria());
-        return new ItemCardapioDTO(entity.getId(), entity.getNome(), entity.getDescricao(), categoriaCardapioDTO, null);
+        List<ItemCardapioVariacaoDTO> variacoes = entity.getVariacoes().stream().map(
+                var -> new ItemCardapioVariacaoDTO(
+                            var.getId(),
+                            null,
+                            variacaoCardapioAssembler.assembleDTO(var.getVariacaoCardapio()),
+                            var.getValor()
+                        )
+        ).collect(Collectors.toList());
+        return new ItemCardapioDTO(entity.getId(), entity.getNome(), entity.getCodigo(), entity.getDescricao(), categoriaCardapioDTO, variacoes, null);
     }
 
     public ItemCardapioVariacaoDTO assembleVariacaoDTO(ItemCardapioVariacao itemCardapioVariacao) {

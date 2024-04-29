@@ -1,0 +1,1 @@
+ALTER TABLE contas_pagar ALTER COLUMN forma_pagamento_id DROP NOT NULL;

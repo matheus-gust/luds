@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface VendaItemCardapioRepository extends JpaRepository<VendaItemCardapio, UUID> {
 
-    List<VendaItemCardapio> findAllByVendaId(UUID id);
+    List<VendaItemCardapio> findAllByParteId(UUID id);
 }

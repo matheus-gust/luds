@@ -27,7 +27,8 @@ public class CompraService {
     }
 
     public Page<Compra> listarCompras(ApiPageRequest pageRequest) {
-        return this.compraRepository.findAll(pageRequest.setPage());
+        Page<Compra> compras = this.compraRepository.findAllOrderedByDataDesc(pageRequest.setPage());
+        return compras;
     }
     @Transactional
     public Compra inserirCompra(Compra compra, List<CompraInsumoIn> itens) {
