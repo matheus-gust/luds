@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${JDBC_DATASOURCE_URL}
-    username: ${JDBC_DATASOURCE_USERNAME}
-    password: ${JDBC_DATASOURCE_PASSWORD}
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
     #url: jdbc:postgresql://localhost:5432/luds-pizzaria
     #username: postgres
     #password: postgres
